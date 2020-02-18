@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.TeleOp; 
 import frc.robot.subsystems.DriveTrain;
-import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.subsystems.Hoppy;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -22,14 +22,13 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveTrain m_driveTrain = new DriveTrain();
+  private final Hoppy m_hoppy = new Hoppy(); 
   
   private final OI m_oi = new OI(); 
 
  // private final ExampleCommand m_autoCommand = new ExampleCommand(m_driveTrain);
 
-  private final TeleOp m_teleOp = new TeleOp(m_driveTrain, m_oi);
-
-  
+  private final TeleOp m_teleOp = new TeleOp(m_driveTrain, m_oi, m_hoppy);
 
 
   /**
@@ -40,6 +39,7 @@ public class RobotContainer {
     configureButtonBindings();
 
     m_driveTrain.setDefaultCommand(m_teleOp);
+    m_hoppy.setDefaultCommand(m_teleOp);
   }
 
   /**

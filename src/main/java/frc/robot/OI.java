@@ -8,7 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-//import edu.wpi.first.wpilibj.buttons.JoystickButton; 
+import edu.wpi.first.wpilibj2.command.button.JoystickButton; 
 
 
 /**
@@ -25,16 +25,7 @@ public class OI {
   // Button button = new JoystickButton(stick, buttonNumber)
   Joystick stick = new Joystick(0); // creates a Joystick with the ID of 0 
   
-
   double buffer = 0.2, speed = 0.8; // buffer is minimum threshold to return information, speed is the multiplier
-  /*public double get_y(){
-    if (Math.abs(stick.getY()) > buffer){ // ensures that the position of the joystick on an axis exceeds the buffer
-      return stick.getY() * speed; // returns the altered position of the joystick 
-    } else {
-      return 0;
-    }
-  }*/
-
   public double get_y(){
       if (Math.abs(stick.getY()) > buffer){
         return stick.getY() * speed; // negates the x-setting, for orientation
@@ -51,6 +42,10 @@ public class OI {
     }
   }
 
+  JoystickButton hopperButton = new JoystickButton(stick, 3); 
+  public boolean isButtonPressed(){
+    return hopperButton.get(); 
+  }
 
 // TODO: Add twist movement in addition to y-axis 
   // There are a few additional built in buttons you can use. Additionally,

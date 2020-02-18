@@ -10,7 +10,7 @@ package frc.robot.commands;
 import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.OI; 
-
+import frc.robot.subsystems.Hoppy;
 
 /**
  * An example command that uses an example subsystem.
@@ -19,17 +19,20 @@ public class TeleOp extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final DriveTrain m_driveTrain; 
   private OI m_oi; 
+  private Hoppy m_hoppy;
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public TeleOp(DriveTrain driveTrain, OI oi) {
+  public TeleOp(DriveTrain driveTrain, OI oi, Hoppy hoppy) {
     m_driveTrain = driveTrain;
     m_oi = oi;
+    m_hoppy = hoppy;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(driveTrain);
+    addRequirements(m_driveTrain);
+    addRequirements(m_hoppy);
   }
 
   // Called when the command is initially scheduled.
@@ -41,6 +44,7 @@ public class TeleOp extends CommandBase {
   @Override
   public void execute() {
     m_driveTrain.drive(m_oi.get_y(), m_oi.get_twist());
+    m_hoppy.flip(m_oi.isButtonPressed()); 
   }
 
   // Called once the command ends or is interrupted.
