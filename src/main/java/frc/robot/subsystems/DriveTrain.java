@@ -15,7 +15,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 public class DriveTrain extends SubsystemBase {
   public DriveTrain() {
 
-    front_left.setInverted(true);
+    front_left.setInverted(true); 
     back_left.setInverted(true); 
     front_right.setInverted(true); 
     back_right.setInverted(true); 

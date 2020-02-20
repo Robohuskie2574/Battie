@@ -10,29 +10,28 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class Hoppy extends SubsystemBase {
+public class Climber extends SubsystemBase {
 
-
-  public Hoppy() {
+  public Climber() {
 
   } 
 
-  Spark spark = new Spark(0);
+  Spark climberMotor = new Spark(2);
 
-  double speed = -0.4; 
-
-  public void flipUp(){
-    speed = 0.4; 
-    spark.set(speed); 
+  public void climbUp(){
+    climberMotor.set(0.75); 
   }
 
-  public void flipDown(){
-    speed = -0.4;
-    spark.set(speed); 
+  public void climbDown(){
+    climberMotor.set(-0.20); 
   }
 
+  public void climbStop(){
+    climberMotor.set(0); 
+  }
+  
   @Override
   public void periodic() {  
-  
+     
   }
 }

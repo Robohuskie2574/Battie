@@ -8,8 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton; 
-
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -23,6 +22,11 @@ public class OI {
   // number it is.
   // Joystick stick = new Joystick(port);
   // Button button = new JoystickButton(stick, buttonNumber)
+
+  public OI(){
+  
+  }
+
   Joystick stick = new Joystick(0); // creates a Joystick with the ID of 0 
   
   double buffer = 0.2, speed = 0.8; // buffer is minimum threshold to return information, speed is the multiplier
@@ -42,12 +46,16 @@ public class OI {
     }
   }
 
-  JoystickButton hopperButton = new JoystickButton(stick, 3); 
-  public boolean isButtonPressed(){
-    return hopperButton.get(); 
+  JoystickButton hopperDownButton = new JoystickButton(stick, 3); 
+  public boolean isHopperDown(){
+    return hopperDownButton.get(); 
   }
 
-// TODO: Add twist movement in addition to y-axis 
+  JoystickButton hopperUpButton = new JoystickButton(stick, 5); 
+  public boolean isHopperUp(){
+    return hopperUpButton.get(); 
+  }
+
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
   // commands the same as any other Button.

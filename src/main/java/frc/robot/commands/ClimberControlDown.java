@@ -7,28 +7,25 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.OI; 
+import frc.robot.subsystems.Climber;; 
 
 /**
  * An example command that uses an example subsystem.
  */
-public class TeleOp extends CommandBase {
+public class ClimberControlDown extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final DriveTrain m_driveTrain; 
-  private OI m_oi; 
+  private Climber m_climber;
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public TeleOp(DriveTrain driveTrain, OI oi) {
-    m_driveTrain = driveTrain;
-    m_oi = oi;
+  public ClimberControlDown(Climber climber) {
+    m_climber = climber;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(m_driveTrain);
+    addRequirements(m_climber);
   }
 
   // Called when the command is initially scheduled.
@@ -39,7 +36,7 @@ public class TeleOp extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_driveTrain.drive(m_oi.get_y(), m_oi.get_twist());
+    m_climber.climbDown(); 
   }
 
   // Called once the command ends or is interrupted.

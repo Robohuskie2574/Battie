@@ -10,29 +10,32 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class Hoppy extends SubsystemBase {
+public class Intake extends SubsystemBase {
 
-
-  public Hoppy() {
+  public Intake() {
 
   } 
 
-  Spark spark = new Spark(0);
+  Spark innerSpark = new Spark(1);
+  Spark outerSpark = new Spark(3); 
 
-  double speed = -0.4; 
-
-  public void flipUp(){
-    speed = 0.4; 
-    spark.set(speed); 
+  public void intakeUp(){
+    innerSpark.set(0.5);
+    outerSpark.set(0.5); 
   }
 
-  public void flipDown(){
-    speed = -0.4;
-    spark.set(speed); 
+  public void intakeDown(){
+    innerSpark.set(-0.5);
+    outerSpark.set(-0.5); 
   }
 
+  public void intakeStop(){
+    innerSpark.set(0);
+    outerSpark.set(0); 
+  }
+  
   @Override
   public void periodic() {  
-  
+    
   }
 }
