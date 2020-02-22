@@ -34,7 +34,7 @@ public class DriveTrain extends SubsystemBase {
   // DifferentialDrive is a type of driving option
 
   public void drive(double x_axis, double y_axis) {
-    diffDrive.arcadeDrive(x_axis, y_axis);
+    diffDrive.arcadeDrive(x_axis, y_axis, true);
   } 
 
   @Override

@@ -23,6 +23,7 @@ public class OI {
   // Joystick stick = new Joystick(port);
   // Button button = new JoystickButton(stick, buttonNumber)
 
+
   public OI(){
   
   }
@@ -40,7 +41,12 @@ public class OI {
 
   public double get_twist(){
     if (Math.abs(stick.getTwist()) > buffer){
-      return -stick.getTwist(); 
+      if (stick.getTwist() < 0){
+        return (stick.getTwist() * stick.getTwist()); 
+      }
+      else {
+        return -(stick.getTwist() * stick.getTwist()); 
+      } 
     } else {
         return 0; 
     }
