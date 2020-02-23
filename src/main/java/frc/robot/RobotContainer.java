@@ -21,7 +21,7 @@ import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Hoppy;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Climber; 
-
+ 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
@@ -35,7 +35,7 @@ public class RobotContainer {
   private final Intake m_intake = new Intake(); 
   private final Climber m_climber = new Climber(); 
   
-  private final OI m_oi = new OI(); 
+  public final OI m_oi = new OI(); 
 
  // private final ExampleCommand m_autoCommand = new ExampleCommand(m_driveTrain);
 
@@ -65,12 +65,12 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    Joystick stick = new Joystick(0); 
-    new JoystickButton(stick, 1).whileHeld(new IntakeControlUp(m_intake));
-    new JoystickButton(stick, 2).whileHeld(new IntakeControlDown(m_intake)); 
+    Joystick stick2 = new Joystick(1); 
+    new JoystickButton(stick2, 1).whileHeld(new IntakeControlUp(m_intake));
+    new JoystickButton(stick2, 2).whileHeld(new IntakeControlDown(m_intake)); 
     
-    new JoystickButton(stick, 9).whileHeld(new ClimberControlUp(m_climber)); 
-    new JoystickButton(stick, 11).whileHeld(new ClimberControlDown(m_climber)); 
+    new JoystickButton(stick2, 9).whileHeld(new ClimberControlUp(m_climber)); 
+    new JoystickButton(stick2, 11).whileHeld(new ClimberControlDown(m_climber)); 
   }
 
 

@@ -28,36 +28,37 @@ public class OI {
   
   }
 
-  Joystick stick = new Joystick(0); // creates a Joystick with the ID of 0 
+  Joystick stick1 = new Joystick(0); // creates a Joystick with the ID of 0 
+  Joystick stick2 = new Joystick(1); 
   
   double buffer = 0.2, speed = 0.8; // buffer is minimum threshold to return information, speed is the multiplier
   public double get_y(){
-      if (Math.abs(stick.getY()) > buffer){
-        return stick.getY() * speed; // negates the x-setting, for orientation
+      if (Math.abs(stick1.getY()) > buffer){
+        return stick1.getY() * speed; // negates the x-setting, for orientation
       } else {
         return 0;
       }
   }
 
   public double get_twist(){
-    if (Math.abs(stick.getTwist()) > buffer){
-      if (stick.getTwist() < 0){
-        return (stick.getTwist() * stick.getTwist()); 
+    if (Math.abs(stick1.getTwist()) > buffer){
+      if (stick1.getTwist() < 0){
+        return (stick1.getTwist() * stick1.getTwist()); 
       }
       else {
-        return -(stick.getTwist() * stick.getTwist()); 
+        return -(stick1.getTwist() * stick1.getTwist()); 
       } 
     } else {
         return 0; 
     }
   }
 
-  JoystickButton hopperDownButton = new JoystickButton(stick, 3); 
+  JoystickButton hopperDownButton = new JoystickButton(stick2, 3); 
   public boolean isHopperDown(){
     return hopperDownButton.get(); 
   }
 
-  JoystickButton hopperUpButton = new JoystickButton(stick, 5); 
+  JoystickButton hopperUpButton = new JoystickButton(stick2, 5); 
   public boolean isHopperUp(){
     return hopperUpButton.get(); 
   }
