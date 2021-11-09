@@ -43,13 +43,13 @@ public class HopperControl extends CommandBase {
     boolean hopperUp = m_oi.isHopperUp(); 
     boolean hopperDown = m_oi.isHopperDown(); 
     if (!(hopperUp && hopperDown)){
-      if (hopperUp){
+      if (hopperUp){ 
         m_hoppy.flipUp();
       }
       if (hopperDown){
         m_hoppy.flipDown(); 
       }
-    }
+    } 
   }
 
   // Called once the command ends or is interrupted.

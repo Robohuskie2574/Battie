@@ -15,15 +15,14 @@ public class Climber extends SubsystemBase {
   public Climber() {
 
   } 
-
   Spark climberMotor = new Spark(2);
 
   public void climbUp(){
-    climberMotor.set(0.95); 
+    climberMotor.set(1); 
   }
 
   public void climbDown(){
-    climberMotor.set(-0.20); 
+    climberMotor.set(-0.40); 
   }
 
   public void climbStop(){

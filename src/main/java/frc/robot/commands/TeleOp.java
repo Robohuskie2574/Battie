@@ -27,7 +27,7 @@ public class TeleOp extends CommandBase {
   public TeleOp(DriveTrain driveTrain, OI oi) {
     m_driveTrain = driveTrain;
     m_oi = oi;
-    // Use addRequirements() here to declare subsystem dependencies.
+    // Use addRequirements() here to declare subsystem depaendencies.
     addRequirements(m_driveTrain);
   }
 
@@ -39,6 +39,7 @@ public class TeleOp extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    m_oi.isInvertFront();
     m_driveTrain.drive(m_oi.get_y(), m_oi.get_twist());
   }
 

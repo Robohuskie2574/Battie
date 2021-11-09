@@ -19,18 +19,14 @@ public class Hoppy extends SubsystemBase {
 
   Spark spark = new Spark(0);
 
-  double speed = -0.4; 
-
   public void flipUp(){
-    speed = 0.4; 
-    spark.set(speed); 
+    spark.set(0.4); 
   }
 
   public void flipDown(){
-    speed = -0.4;
-    spark.set(speed); 
+    spark.set(-0.4); 
   }
-
+  
   @Override
   public void periodic() {  
   

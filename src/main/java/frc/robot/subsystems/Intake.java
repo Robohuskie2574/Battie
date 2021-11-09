@@ -16,21 +16,17 @@ public class Intake extends SubsystemBase {
 
   } 
 
-  Spark innerSpark = new Spark(1);
   Spark outerSpark = new Spark(3); 
 
   public void intakeUp(){
-    innerSpark.set(0.7);
     outerSpark.set(0.8); 
   }
 
   public void intakeDown(){
-    innerSpark.set(-0.7); 
     outerSpark.set(-0.8); 
   }
 
   public void intakeStop(){
-    innerSpark.set(0);
     outerSpark.set(0); 
   }
   

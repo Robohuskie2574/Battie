@@ -9,18 +9,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick; 
 import edu.wpi.first.wpilibj2.command.button.JoystickButton; 
-import frc.robot.commands.HopperControl;
-import frc.robot.commands.TeleOp; 
-import frc.robot.commands.IntakeControlUp;
-import frc.robot.commands.IntakeControlDown; 
-import frc.robot.commands.IntakeControlStop;
-import frc.robot.commands.ClimberControlDown;
-import frc.robot.commands.ClimberControlUp; 
-import frc.robot.commands.ClimberControlStop;
-import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.Hoppy;
-import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.Climber; 
+import frc.robot.commands.*;
+import frc.robot.subsystems.*;
  
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -34,6 +24,7 @@ public class RobotContainer {
   private final Hoppy m_hoppy = new Hoppy(); 
   private final Intake m_intake = new Intake(); 
   private final Climber m_climber = new Climber(); 
+  private final Winch m_winch = new Winch(); 
   
   public final OI m_oi = new OI(); 
 
@@ -43,7 +34,7 @@ public class RobotContainer {
   private final HopperControl m_hopperControl = new HopperControl(m_hoppy, m_oi); 
   private final IntakeControlStop m_intakeControlStop = new IntakeControlStop(m_intake); 
   private final ClimberControlStop m_climberControlStop = new ClimberControlStop(m_climber); 
-  //private final IntakeControlStop m_intakeControlStop = new IntakeControlStop(m_intake); 
+  private final WinchStop m_winchStop = new WinchStop(m_winch); 
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -56,6 +47,7 @@ public class RobotContainer {
     m_hoppy.setDefaultCommand(m_hopperControl);
     m_intake.setDefaultCommand(m_intakeControlStop);
     m_climber.setDefaultCommand(m_climberControlStop);
+    m_winch.setDefaultCommand(m_winchStop);
   }
 
   /**
@@ -65,12 +57,15 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    Joystick stick2 = new Joystick(1); 
-    new JoystickButton(stick2, 1).whileHeld(new IntakeControlUp(m_intake));
-    new JoystickButton(stick2, 2).whileHeld(new IntakeControlDown(m_intake)); 
+    Joystick stick = new Joystick(0); 
+    new JoystickButton(stick, 1).whileHeld(new IntakeControlUp(m_intake));
+    new JoystickButton(stick, 2).whileHeld(new IntakeControlDown(m_intake)); 
     
-    new JoystickButton(stick2, 9).whileHeld(new ClimberControlUp(m_climber)); 
-    new JoystickButton(stick2, 11).whileHeld(new ClimberControlDown(m_climber)); 
+    new JoystickButton(stick, 9).whileHeld(new ClimberControlUp(m_climber)); 
+    new JoystickButton(stick, 11).whileHeld(new ClimberControlDown(m_climber)); 
+
+    new JoystickButton(stick, 4).whileHeld(new WinchIn(m_winch)); // intake 
+    new JoystickButton(stick, 6).whileHeld(new WinchOut(m_winch)); // out
   }
 
 
